@@ -1,0 +1,46 @@
+<% content_for :title, "收支記錄列表" %>
+
+<h1>收支記錄列表</h1>
+
+<p class="actions">
+  <%= link_to "新增收支記錄", new_transaction_path %>
+</p>
+
+<% if @transactions.any? %>
+  <% income_total  = @transactions.select(&:income?).sum(&:amount) %>
+  <% expense_total = @transactions.select(&:expense?).sum(&:amount) %>
+
+  <dl class="summary">
+    <dt>總收入</dt>
+    <dd><%= number_to_currency(income_total, unit: "NT$", precision: 0) %></dd>
+    <dt>總支出</dt>
+    <dd><%= number_to_currency(expense_total, unit: "NT$", precision: 0) %></dd>
+    <dt>結餘</dt>
+    <dd><%= number_to_currency(income_total - expense_total, unit: "NT$", precision: 0) %></dd>
+  </dl>
+
+  <table class="transactions">
+    <thead>
+      <tr>
+        <th>發生日期</th>
+        <th>類型</th>
+        <th>金額</th>
+        <th>分類</th>
+        <th>備註</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transactions.each do |transaction| %>
+        <tr class="transaction transaction--<%= transaction.kind %>">
+          <td><%= transaction.occurred_on.to_fs(:long) %></td>
+          <td><%= transaction.income? ? "收入" : "支出" %></td>
+          <td><%= number_to_currency(transaction.amount, unit: "NT$", precision: 0) %></td>
+          <td><%= transaction.category.presence || "—" %></td>
+          <td><%= transaction.note.presence || "—" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty">目前還沒有任何收支記錄。</p>
+<% end %>

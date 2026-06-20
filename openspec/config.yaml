@@ -1,0 +1,26 @@
+schema: spec-driven
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+context: |
+  語言 / 框架: Ruby on Rails 8.x
+  Ruby 版本: 3.3.7
+  資料庫: PostgreSQL
+  快取 / 訊息佇列: Redis
+  背景工作: Sidekiq
+  使用 Docker + docker-compose，能在 local 跑起來即可
+
+  專案性質: 個人生活記帳的小型 side project
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# claude code: 「這是一個生活記帳的 side project，幫我用 openspec 建立第一個功能的 proposal：使用者可以新增一筆收支記錄」
+# 第一步：先把 Rails 8 + Docker + docker-compose 的基礎骨架建起來（這個不太需要走完整 spec 流程，比較像是 scaffolding）
+# 第二步：等骨架能跑起來後，再用 openspec 流程一個個功能去寫 proposal → spec → tasks → 實作

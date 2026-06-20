@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+lunch:
+  amount: 120
+  kind: expense
+  occurred_on: 2026-06-20
+  category: 餐飲
+  note: 午餐便當
+
+salary:
+  amount: 50000
+  kind: income
+  occurred_on: 2026-06-01
+  category: 薪資
+  note: 六月薪水
