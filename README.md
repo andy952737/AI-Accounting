@@ -5,6 +5,7 @@
 - change
 - specs
 - config.yaml
+- 使用 openspec指令
 
 ## 使用 claude code
-# AI-Accounting
+- .claude
